@@ -1,0 +1,28 @@
+html
+    head
+    title Add Artwork
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    include header.pug
+    
+    if session && session.loggedin
+        h4 Name:
+            input(type="text", name="artName", id="artName", value="")
+        h4 Year:
+            input(type="text", name="year", id="year", value="")
+        h4 Artist Name:
+            input(type="text", name="artistName", id="artistName", value="")
+        h4 Category:
+            input(type="text", name="category", id="category", value="")
+        h4 Medium:
+            input(type="text", name="medium", id="medium", value="")
+        h4 Description:
+            input(type="text", name="description", id="description", value="")
+        h4 Image:
+            input(type="text", name="image", id="image", value="")
+
+        button(type='button' id='addArt' onclick='addArt()' value="") Add Art
+            

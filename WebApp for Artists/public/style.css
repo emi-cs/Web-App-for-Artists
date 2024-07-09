@@ -1,0 +1,14 @@
+body {
+    font-family: "Constantia", Times, serif;
+    background-color: pink;
+    padding-left: 5px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Constantia', Georgia, Times, serif;
+}
+p, div {
+    font-family: 'Constantia', Helvetica, Arial, sans-serif;
+}
+select,button,input{
+    font-family: "Constantia", Times, serif;
+}

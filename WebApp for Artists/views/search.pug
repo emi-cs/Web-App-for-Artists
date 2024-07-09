@@ -1,0 +1,22 @@
+html
+    head
+    title Search
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    include header.pug
+    
+    if session && session.loggedin
+        h1 Search by:
+        h4 Art Name:
+            input(type="text", name="searchArtName", id="searchArtName", value="")
+        h4 Artist Name:
+            input(type="text", name="searchArtistName", id="searchArtistName", value="")
+        h4 Category Keyword:
+            input(type="text", name="searchCategory", id="searchCategory", value="")
+
+        button(id='search' onclick='search()' value='') Search 
+
+        #searchResult

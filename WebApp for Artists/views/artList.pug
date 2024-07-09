@@ -1,0 +1,19 @@
+html
+    head
+    title Artwork List 
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    include header.pug
+    br
+    if session && session.loggedin
+        each art in arts
+            a(href=`/art/${art._id}`) #{art.name}
+            br
+            img(src=art.image alt=art.name style='width:200px; height:200px;')
+            br
+            
+
+    

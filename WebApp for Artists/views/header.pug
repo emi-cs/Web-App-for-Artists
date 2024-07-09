@@ -1,0 +1,32 @@
+a(href="/") Home
+    |  
+    if session && session.loggedin
+        span 
+            a(href="/art") Art
+        span 
+            a(href="/artist") Artists
+        span 
+            a(href="/user") User Account
+        span 
+            a(href="/search") Search
+        span 
+            a(href="/addart") Add Artwork
+        
+
+        if session && session.loggedin && session.artist 
+            span   
+                a(href="/addworkshop") Add Workshop
+        span 
+            a(href="/logout") Logout
+            
+    else
+        span
+            a(href="/register") Register 
+        span
+            form(action="/login" method="post")
+                | Username: 
+                input(type="text" name="username" required id="username")
+                |   Password: 
+                input(type="password" name="password" required id="password")
+                |   
+                button(type="submit") Login

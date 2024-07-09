@@ -1,0 +1,48 @@
+html
+    head
+    title #{art.name}
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    include header.pug
+    if session && session.loggedin
+        h2 #{art.name}
+        h4 Artist: 
+        a(href=`/artist/${art.artist._id}`) #{art.artist.username}
+        h4 Year: #{art.year}
+        h4 Category: #{art.category}
+        button(type='button' id='category' onclick='sameCategory()' value=art.category) Show artwork in the same Category
+        #resultCategory
+        br
+        h4 Medium: #{art.medium}
+       
+        button(type='button' id='medium' onclick='sameMedium()' value=art.medium) Show artwork using the same Medium
+        #resultMedium
+        br
+
+        img(src=art.image alt=art.name style='width:500px; height:500px;')
+        br
+
+        -let numberOfLikes = art.like.length
+        -console.log(numberOfLikes) 
+        h4 Number of Likes: #{numberOfLikes}
+        each like in art.like
+            h5 #{like.username}
+
+        h4 Review: 
+        each review in art.reviews
+            h5 #{review.username}: 
+            h5 #{review.review}
+            br
+        if session.userid != art.artist._id
+            input(type="text", name="reviewContent", id="reviewContent", value="")
+            br
+            button(type='button' id='review' onclick='review()' value=`${art._id}`) Leave your review
+            br
+            br
+            br
+            button(type='button' id='like' onclick='like()' value=`${art._id}`) Like this artwork
+
+            button(type='button' id='unlike' onclick='unlike()' value=`${art._id}`) Unlike this artwork

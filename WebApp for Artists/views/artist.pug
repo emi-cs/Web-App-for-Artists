@@ -1,0 +1,47 @@
+html
+    head
+    title #{artist.name}
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body 
+    include header.pug
+    if session && session.loggedin
+        h1 #{artist.username}
+        h3 Art:
+        each art in artist.art
+            a(href=`/art/${art._id}`) #{art.name}
+            br
+        h3 Followers: 
+        each follower in artist.followers 
+            a(href=`/artist/${follower._id}`) #{follower.username}
+            br
+        h3 Following: 
+        each flwing in artist.following 
+            a(href=`/artist/${flwing._id}`) #{flwing.username}
+            br
+ 
+        h3 Likes: 
+        each like in artist.like
+            a(href=`/art/${like._id}`) #{like.name}
+            br
+
+        h3 Reviews: 
+        each review in artist.reviews
+            a(href=`/art/${review._id}`) #{review.name}
+            br    
+
+        h3 Workshop:
+        each workshop in artist.workshopOrganize
+            a(href=`/workshop/${workshop._id}`) #{workshop.title}
+            br
+        if artist.artist == true && session.userid != artist._id
+           
+
+            button(type='button' id='follow' onclick='follow()' value=`${artist._id}`) Follow This Artist
+            br
+
+            button(type='button' id='unfollow' onclick='unfollow()' value=`${artist._id}`) Unfollow This Artist
+            br
+        

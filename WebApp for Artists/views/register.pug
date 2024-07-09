@@ -1,0 +1,22 @@
+html
+    head
+    title Create Account
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    a(href="/") Home
+    |
+    |
+    a(href="/register") Register 
+
+    h4 Username:
+        input(type="text", name="name", id="name", value="")
+    h4 Password:
+        input(type="text", name="pass", id="pass", value="")
+    
+    button(type='button' id='createAccount' onclick='createAccount()' value="") Create Account
+
+
+    

@@ -1,0 +1,36 @@
+html 
+    head
+        title User Account
+        include header.pug
+        script(src='/client.js')
+        style 
+            include ../public/style.css
+    body
+        h4 User Name:
+        input(type="text", name="accountUsername", id="accountUsername", value= user.username)
+        h4 Account Type:
+        select(name="accountType" id="accountType")
+            if user.artist == true 
+                option(value="Artist" selected) Artist
+                option(value="Patron") Patron
+            else
+                option(value="Artist") Artist
+                option(value="Patron" selected) Patron
+        h4 Following:
+        each following in user.following
+            a(href=`/artist/${following._id}`) #{following.username}
+            br
+        if user.artist == true 
+            h4 Followers:
+            each followers in user.followers
+                a(href=`/artist/${followers._id}`) #{followers.username}
+                br
+        h4 Likes: 
+        each art in user.like 
+            a(href=`/art/${art._id}`) #{art.name}
+            br
+        h4 Reviews:
+        each review in user.reviews
+            a(href=`/art/${review._id}`) #{review.name}
+            br
+        button(type='button' id='updateUser' onclick='updateUser()' value="") Update User Account

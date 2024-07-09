@@ -1,0 +1,18 @@
+html
+    head
+    title #{workshop.name}
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    include header.pug
+
+    if session && session.loggedin
+        h1 #{workshop.title}
+        button(id='registerWorkshop' onclick='registerWorkshop()' value=`${workshop._id}`) Register to Workshop
+
+        h1 Attendee: 
+        each attendee in workshop.attendee
+            a(href=`/artist/${attendee._id}`) #{attendee.username}
+            br

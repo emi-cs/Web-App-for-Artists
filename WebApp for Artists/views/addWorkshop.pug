@@ -1,0 +1,15 @@
+html
+    head
+    title Add Workshop 
+    script(src='/client.js')
+    style 
+        include ../public/style.css
+
+    body  
+    include header.pug
+
+    h4 Workshop Title:
+        input(type="text", name="workshopTitle", id="workshopTitle", value="")
+
+    button(type='button' id='addWorkshop' onclick='addWorkshop()' value="") Add Workshop
+            
